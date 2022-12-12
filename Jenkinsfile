@@ -10,12 +10,14 @@ pipeline {
     // First stage installs node dependencies and Cypress binary
     stage('build') {
       steps {
+        dir("my-app/") {
         // There a few default environment variables on Jenkins
         // on local Jenkins machine (assuming port 8080) see
         // http://localhost:8080/pipeline-syntax/globals#env
-        echo "Running build ${env.BUILD_ID} on ${env.JENKINS_URL}"
-        sh 'npm ci'
-        sh 'npm run cy:verify'
+          echo "Running build ${env.BUILD_ID} on ${env.JENKINS_URL}"
+          sh 'npm ci'
+          sh 'npm run cy:verify'
+        }
       }
     }
 
@@ -23,7 +25,9 @@ pipeline {
       steps {
         // Start local server in the background
         // we will shut it down in "post" command block
-        sh 'nohup npm run start &'
+          dir("my-app/") {
+          sh 'nohup npm run start &'
+        }
       }
     }
   }
