@@ -12,7 +12,8 @@ pipeline {
     stage('build-and-test') {
       agent {
         docker {
-          image 'cypress/base:latest'
+          // image 'cypress/base:latest'
+          image 'node:16.13.1-alpine'
           reuseNode true
         }
       }
