@@ -25,9 +25,11 @@ pipeline {
     //   }
 
       steps {
-        sh 'cd my-app'
-        sh 'npm ci'
-        sh "npm run test:ci:record"
+        dir("my-app/") {
+          sh 'pwd'
+          sh 'npm ci'
+          sh "npm run test:ci:record"
+        }
       }
     }
   }
