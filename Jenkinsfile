@@ -8,7 +8,7 @@ pipeline {
       agent {
         docker {
           image 'cypress/base:latest'
-          resuseNode true
+          reuseNode true
         }
       }
     //   environment {
