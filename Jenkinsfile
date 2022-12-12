@@ -18,8 +18,10 @@ pipeline {
     //   }
 
       steps {
-        sh 'npm ci'
-        sh "npm run test:ci:record"
+        dir("my-app/") {
+          sh 'npm ci'
+          sh "npm run test:ci:record"
+        }
       }
     }
   }
