@@ -25,6 +25,7 @@ pipeline {
     //   }
 
       steps {
+        sh 'cd my-app'
         sh 'npm ci'
         sh "npm run test:ci:record"
       }
