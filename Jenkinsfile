@@ -4,6 +4,11 @@ pipeline {
     label 'docker-build-agent'
   }
   stages {
+    stage('checkout-branch') {
+      steps {
+        checkout scm
+      }
+    }
     stage('build-and-test') {
       agent {
         docker {
