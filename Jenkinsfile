@@ -1,13 +1,16 @@
 pipeline {
   agent {
     // This image provides everything needed to run Cypress
-    docker {
-      image 'cypress/base:latest'
-    }
+    label 'java-docker-slave'
   }
-
   stages {
     stage('build-and-test') {
+      agent {
+        docker {
+          image 'cypress/base:latest'
+          resuseNode true
+        }
+      }
     //   environment {
     //     // We will be recording test results and video on Cypress dashboard
     //     // to record we need to set an environment variable
