@@ -1,7 +1,7 @@
 pipeline {
   agent {
     // This image provides everything needed to run Cypress
-    label 'docker-build-agent'
+    label 'java-docker-slave'
   }
   stages {
     stage('build-and-test') {
